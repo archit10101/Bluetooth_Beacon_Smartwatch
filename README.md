@@ -1,32 +1,30 @@
 # Bluetooth Low Energy Distance Monitoring App
 
-This Android application is designed to connect to multiple Bluetooth Low Energy (BLE) devices, facilitating distance monitoring between them. The main components of this application include:
+This Android application facilitates the connection to multiple Bluetooth Low Energy (BLE) devices, enabling distance monitoring between them. The key components of this application include:
 
 ## Beacon
-The beacon utilized in this application is a XIAO ESP32C3 microcontroller. It establishes a Bluetooth connection with an Android smartwatch and broadcasts information about its position. Additionally, it utilizes the received signal strength indicator (RSSI) to determine the distance from the smartwatch.
+Utilizing a XIAO ESP32C3 microcontroller as a beacon, the application establishes a Bluetooth connection with an Android smartwatch. It broadcasts positional information and uses the received signal strength indicator (RSSI) to calculate the distance from the smartwatch. [Beacon Repo](https://github.com/archit10101/BluetoothArduinoESPBeacon)
 
 ## Microcontroller
-This device acts as the receiver of the data transmitted by the smartwatch. When the smartwatch enters a certain range of distance from the beacon, it broadcasts a signal indicating that it is too close.
+The microcontroller functions as the receiver of data transmitted by the smartwatch. It detects when the smartwatch enters a predefined range from the beacon and broadcasts a signal indicating proximity. [Microcontroller Repo](https://github.com/archit10101/Arduino_BLE)
 
 ## Functionality
-The primary function of this application is to determine the proximity between the XIAO ESP32C3 beacon and an Android smartwatch. It then relays this information to another microcontroller, allowing the user to utilize the data as per their requirements.
+The application's core function is to assess the proximity between the XIAO ESP32C3 beacon and an Android smartwatch. It then relays this information to another microcontroller, enabling users to leverage the data for various purposes.
 
 ## Usage
-To use this application, follow these steps:
+To utilize this application, follow these steps:
 
 1. Install the application on your Android device.
-2. Ensure that your Android device supports Bluetooth Low Energy.
-3. Power on the XIAO ESP32C3 beacon and the microcontroller.
-4. Pair the Android device with the beacon.
-5. Monitor the distance readings between the beacon and the smartwatch using the application.
+2. Ensure that your device supports Bluetooth Low Energy.
+3. Power on both the XIAO ESP32C3 beacon and the microcontroller.
+4. Pair your Android device with the beacon.
+5. Monitor distance readings between the beacon and smartwatch using the application.
 
 ## Note
-This application serves as a demonstration of BLE distance monitoring and can be customized or integrated into larger projects as needed.
+This application serves as a demonstration of BLE distance monitoring and is customizable for integration into larger projects. Refer to the documentation or contact the repository owner for further information.
 
-For more information, refer to the documentation or contact the repository owner.
-
-**Disclaimer**: This application is provided as-is without any warranty. Use at your own risk.
+**Disclaimer**: This application is provided as-is without warranty. Use at your own risk.
 
 ---
 
-Feel free to contribute or provide feedback by opening an issue or submitting a pull request!
+Contributions and feedback are welcomed through issue submission or pull requests!
