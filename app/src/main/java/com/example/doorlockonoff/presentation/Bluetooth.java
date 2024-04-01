@@ -95,14 +95,14 @@ public class Bluetooth {
                 if (BluetoothDevice.ACTION_FOUND.equals(action))
                 {
                     BluetoothDevice foundDevice = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                    Log.d("adsress",foundDevice.getAddress()+":"+foundDevice.getName());
+                    Log.d("address",foundDevice.getAddress()+":"+foundDevice.getName());
                     if (foundDevice.getAddress().equals(address))
                     {
                         Log.d("here","here");
                         mBluetoothAdapter.cancelDiscovery();
                         Log.d("Connecting...","Connecting...");
                         device = foundDevice;
-                        Log.d("test","FOUND:" + device.getAddress());
+                        Log.d("test","FOUND: " + device.getName()+" address: "+ device.getAddress());
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                             mGatt = device.connectGatt(context.getApplicationContext(), false, bluetoothGattCallback, TRANSPORT_LE);
                         }
