@@ -139,12 +139,12 @@ public class MainActivity extends Activity {
                 if (isChecked) {
                     colorStateList = ColorStateList.valueOf(Color.parseColor("#700114"));
                     monitoring = true;
-                    onOff.setText("Locked");
+                    onOff.setText("Unavailable");
                 }
                 else {
                     colorStateList = ColorStateList.valueOf(Color.BLACK);
                     monitoring = false;
-                    onOff.setText("Unlocked");
+                    onOff.setText("Busy");
 
 
                 }
@@ -157,8 +157,12 @@ public class MainActivity extends Activity {
         startRssiMonitoring();
     }
 
+    private long currentTime = System.currentTimeMillis();
+
     Handler queueHandler;
     Runnable queueRunnable;
+
+    private boolean knockOn;
     private void startRssiMonitoring() {
         queueHandler = new Handler();
         queueRunnable = new Runnable() {
@@ -171,8 +175,21 @@ public class MainActivity extends Activity {
                 }
 
 //           Change the number (-40) to change the distance. If you want it to
-                if (rssi < -40 && monitoring) {
-                    bluetoothEMS.startAdd("stim");
+                if (rssi < -40 ) {
+                    if (monitoring){
+                        bluetoothEMS.startAdd("stim1");
+                    }else{
+                        if (System.currentTimeMillis()-currentTime>1000){
+                            if (knockOn){
+                                bluetoothEMS.startAdd("stim1");
+                                knockOn = false;
+
+                            }else{
+                                bluetoothEMS.startAdd("stim2");
+                                knockOn = true;
+                            }
+                        }
+                    }
                 }
 
                 queueHandler.postDelayed(this, 300);
